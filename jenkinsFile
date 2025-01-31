@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+    
+       stages {
+        
+        
+        stage('build and pushing the image') {
+            
+            steps {
+                
+                script {
+                    
+                    withDockerRegistry(credentialsId: 'docker-cred') {
+                        
+                        sh "docker build -t pavankolani/jenkins-one:latest ."
+                        sh "docker push pavankolani/jenkins-one:latest"
+                    }
+                }
+            }
+        }
+    }
+
+}
