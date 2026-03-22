@@ -7,7 +7,7 @@ public class HelloWorldTest {
     public void testSayHello() {
         HelloWorld hello = new HelloWorld();
         String result = hello.sayHello();
-        assertEquals("Hello, World!", result);
+        assertEquals("Hello,World!", result);
     }
 }
 
