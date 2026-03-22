@@ -10,3 +10,5 @@ jobs:
       - uses: actions/checkout@v2
       - name: give an intro
         run: echo "hello world"
+      - name: using maven for build
+        run: mvn clean package
