@@ -1,0 +1,31 @@
+name: build and push docker image
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+     version:
+      type: string
+      default: ''
+
+env:
+  name: pk-dockerfile
+  tag: april
+
+jobs:
+
+  build:
+   runs-on: ubuntu-latest
+   steps:
+    - name: checkout
+      uses: actions/checkout@v2
+
+    - name: build dokcer image
+      run: |-
+        docker build -f pythondockerfile -t ${{ env.name }}:${{ env.tag }} .
+      
+    - name: push docker image
+      run: |-
+        docker login -u ${{ secrets.DOCKER_USERNAME }} -p {{ secrets.DOCKER_PASSWORD }} docker.io
+        docker push ${{ env.name }}:${{ env.tag }}

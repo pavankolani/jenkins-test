@@ -1,0 +1,9 @@
+FROM ubuntu:resolute-20260312
+
+RUN java --version && \
+    apt update -y && \
+    apt install open-jdk && \
+    java --version
+
+
+CMD['bash']
